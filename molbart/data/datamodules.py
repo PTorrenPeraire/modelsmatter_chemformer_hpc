@@ -455,8 +455,6 @@ class FineTuneReactionDataModule(_AbsDataModule):
         enc_tokens = [tokens + [sep_token] for tokens in enc_tokens]
         enc_mask = [mask + [0] for mask in enc_mask]
 
-        # TODO Check length of combined sequence
-
         enc_token_ids = self.tokeniser.convert_tokens_to_ids(enc_tokens)
         dec_token_ids = self.tokeniser.convert_tokens_to_ids(dec_tokens)
 
