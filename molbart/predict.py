@@ -51,12 +51,8 @@ def predict(model, test_loader):
     smiles = []
     log_lhs = []
     original_smiles = []
-    print(f"Will run {len(test_loader)} batches")
-    import time  # DELETE THIS
 
     for b_idx, batch in enumerate(test_loader):
-        start = time.time()  # DELETE THIS
-        print(f"Working on batch {b_idx}")  # DELETE THIS
         device_batch = {
             key: val.to(device) if type(val) == torch.Tensor else val
             for key, val in batch.items()
@@ -69,7 +65,6 @@ def predict(model, test_loader):
         smiles.extend(smiles_batch)
         log_lhs.extend(log_lhs_batch)
         original_smiles.extend(batch["target_smiles"])
-        print(f"Batch took {time.time()-start}")  # DELETE THIS
     return smiles, log_lhs, original_smiles
 
 
